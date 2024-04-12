@@ -1,0 +1,178 @@
+*
+{
+    padding: 0;
+    margin: 0;
+    font-family:sans-serif;
+}
+body
+{
+    background-color:rgb(6, 128, 0);
+    width: 100vw;
+    overflow-x: hidden;
+}
+.container
+{
+    display: flex;
+ 
+    min-height: 100vh;
+    width: 98vw;
+    column-gap: 1vw;
+    margin: 4px;
+}
+.left
+{
+    width: 20vw;
+    height: 100vh;
+    border-radius: 10px;
+    background-color: rgb(24, 23, 23);
+    position: sticky;
+    top: 0;
+    box-shadow: 0px 0px 3px 1px rgba(255, 255, 255, 0.365);
+   padding: 10px;
+   display: flex;
+   flex-direction: column;
+}
+
+#results
+{
+    display: flex;
+    flex-wrap: wrap;
+    width: 77vw; 
+    background-color: rgb(24, 23, 23);
+    border-radius: 10px;
+    justify-content: center;
+    min-height: 100vh;
+}
+.songs
+{
+   
+    width: 300px;
+    height: 400px;
+    background-color:blue;
+    margin: 10px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    row-gap: 8px;
+    box-shadow: 0px 0px 4px 1px rgba(255, 255, 255, 0.1);
+}
+
+.title
+{
+    font-size:x-large;
+    width: 300px;
+    height: 30px;
+    justify-content: center;
+    display: flex;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: white;
+    font-weight: bolder;
+}
+.songimg
+{
+    width: 290px;
+    border-radius: 5px;
+
+}
+.Search
+{
+    display: flex;
+    flex-wrap: wrap;
+}
+.Search input
+{
+    width: 15vw;
+    height: 30px;
+    border: 0;
+    border-radius: 4px;
+    margin: 3px;
+}
+.Search button
+{
+    width: 50px;
+    height: 30px;
+    border: 0;
+    border-radius: 4px;
+    margin: 3px;
+    font-size:large;
+}
+.Search button img
+{
+    
+    height: 30px;
+
+}
+.logo
+{
+    display: flex;
+    width: 20vw;
+    height: 40px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+
+}
+#logo-text{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color:#ff00ff;
+    font-size: 28px;
+
+}
+.audio {
+   background-color:purple;
+   border-radius: 10px;
+   margin: 2px;
+}
+
+@media screen and (max-width:810px)
+{
+    .Search
+    {
+      
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 36px;
+        margin: 0;
+        margin-right: 5vw;
+
+    }
+    .Search input
+    {
+        width: 20vw;
+    }
+    .container
+    {
+        flex-direction: column;
+        row-gap: 4px;
+    }
+    .left
+    {
+        width: 99vw;
+        min-height: 10vh;
+        display: flex;
+        height: 0;
+        justify-content: space-between;
+        z-index: 1;
+        padding-left: 10px;
+        padding-right: 10px;
+        align-items: center;
+        flex-direction: row;
+    }
+    #results
+    {
+        width: 99vw;
+    }
+    .logo img
+    {
+        width: 100px;
+    }
+    .logo
+    {
+        width:100px;
+ }
+}

@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CALCULATOR</title>
+ 
+</head>
+<body>
+
+<script >
+    document.addEventListener('DOMContentLoaded', function() {
+  const styles = `
+  body {
+    font-family: 'Poppins', sans-serif;
+    background:  linear-gradient(45deg, #0a0a0a, #3a4452);
+      margin: 0;
+      padding: 0;
+      justify-content: center;
+    align-items: center;
+    display: flex;
+  }
+  
+  .container {
+    max-width:350px;
+    margin:300px auto;
+    border: 1px solid #ffffff;
+    background-color: transparent;
+      padding: 20px;
+      border-radius: 25px;
+      box-shadow: 0px 3px 15px rgba(114, 119, 113, 0.8);
+      
+  }
+  
+  #textbox {
+      width:290px;
+      padding: 24px;
+      font-size: 40px;
+      margin: 15px;
+      box-shadow: 0px 3px 15px rgba(160, 14, 14, 0);
+      background:transparent;
+      color: #ffffff;
+      border: 1px solid;
+      text-align:right;
+  }
+  
+  
+  
+  button {
+    font-size: 20px;
+    border: none;
+    cursor: pointer;
+    color: #6dee0a;
+    background:transparent;
+    border-radius: 35%;
+    margin: 10px;
+    width: 65px; 
+    height: 60px; 
+    box-shadow: -8px -8px 15px rgba(255, 255, 255, 0.2);
+    
+}
+#equal{
+    width: 65px;
+    background-color: #fb7c14;
+    border-radius: 3;
+}
+`;
+  
+  const styleElement = document.createElement('style');
+  styleElement.textContent = styles;
+  document.head.appendChild(styleElement);
+});
+
+document.addEventListener('DOMContentLoaded', function() {
+  const h1 = document.createElement('h1');
+  const h2 = document.createElement('h2');
+  const divContainer = document.createElement('div');
+  const divInput = document.createElement('div');
+  const inputTextbox = document.createElement('input');
+  const divButtons = document.createElement('div');
+  inputTextbox.setAttribute('type', 'text');
+  inputTextbox.setAttribute('id', 'textbox');
+  divContainer.classList.add('container');
+  
+  divInput.appendChild(inputTextbox);
+  divInput.appendChild(inputTextbox);
+  const buttonValues = ["AC","DEL","%","/","7","8","9","*","4","5","6","-","1","2","3","+","0","00",".","="];
+  buttonValues.forEach(value => {
+      const button = document.createElement('button');
+      button.classList.add('buttons');
+      button.textContent = value;
+      button.onclick = function() {
+          if (value === 'AC') {
+              ClearScreen();
+          }
+          
+           else if (value === '=') {
+            equal();
+          } 
+           else if (value === 'DEL') {
+            deleteLast();
+          } 
+          else {
+              appendToScreen(value);
+          }
+      };
+      divButtons.appendChild(button);
+  });
+
+ 
+  document.body.appendChild(h1);
+  document.body.appendChild(h2);
+  divContainer.appendChild(divInput);
+  divContainer.appendChild(divButtons);
+  document.body.appendChild(divContainer);
+});
+
+function percent() {
+  const currentValue = parseFloat(document.getElementById('textbox').value);
+  const percentValue = currentValue / 100;
+  document.getElementById('textbox').value = percentValue;
+}
+
+
+function appendToScreen(value) {
+    document.getElementById('textbox').value += value;
+}
+
+function ClearScreen() {
+  document.getElementById('textbox').value = '';
+}
+
+function deleteLast() {
+  const currentText = document.getElementById('textbox').value;
+  document.getElementById('textbox').value = currentText.slice(0, -1);
+}
+
+function equal() {
+  try {
+      const result = eval(document.getElementById('textbox').value);
+      if (!isFinite(result) || isNaN(result)) {
+          throw new Error('Invalid Calculation');
+      }
+      document.getElementById('textbox').value = result;
+  } catch (error) {
+      console.error(error.name); 
+     
+      ClearScreen();
+  }
+}
+
+document.addEventListener('keydown', function(event) {
+  const key = event.key;
+  if (key === 'Enter') {
+      event.preventDefault();
+      equal();
+  } else if (key === 'Escape') {
+      ClearScreen();
+  } else if (key === 'DEL') {
+    deleteLast();
+  }
+  else if (key === 'Backspace') {
+      deleteLast();
+  }
+ 
+     else if (key === '%') {
+      percent()
+   
+  }
+
+  else if (!isNaN(key) || key === '.' || ['+', '-', '*', '/'].includes(key)) {
+      appendToScreen(key);
+  }
+});
+
+</script>
+</body>
+</html>
+
+  
+  
